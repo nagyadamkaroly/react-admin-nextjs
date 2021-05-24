@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostUpdateRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
@@ -48,10 +49,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Post $post, PostUpdateRequest $request)
     {
-        $post = Post::find($id);
         $post->update($request->all());
+
+
         return $post;
     }
 
